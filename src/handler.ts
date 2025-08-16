@@ -17,6 +17,13 @@ const MOCK_API_BASE = process.env.MOCK_API_BASE!;
 const USERNAME = process.env.API_USERNAME!;
 const PASSWORD = process.env.API_PASSWORD!;
 
+// Common CORS headers
+const corsHeaders = {
+    "Access-Control-Allow-Origin": "*", // or restrict to Netlify domain
+    "Access-Control-Allow-Headers": "Content-Type,Authorization",
+    "Access-Control-Allow-Methods": "GET,OPTIONS"
+};
+
 let authToken: string | null = null;
 let refreshToken: string | null = null;
 
@@ -151,14 +158,14 @@ export const getCities = async (event: APIGatewayProxyEvent) => {
                 totalPages: Math.ceil(data.length / limit),
                 cities: citiesData
             }),
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json", ...corsHeaders },
         };
     } catch (err) {
         console.error(err);
         return {
             statusCode: 500,
             body: JSON.stringify({ message: "Internal server error" }),
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json", ...corsHeaders },
         };
     }
 };
