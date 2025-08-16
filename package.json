@@ -1,0 +1,22 @@
+{
+    "name": "pollution-app-backend",
+    "version": "1.0.0",
+    "description": "Backend for Pollution App (TypeScript)",
+    "main": "dist/handler.js",
+    "scripts": {
+        "dev": "sls offline",
+        "build": "tsc",
+        "deploy": "sls deploy"
+    },
+    "dependencies": {
+        "axios": "^1.11.0",
+        "dotenv": "^17.2.1",
+        "node-cache": "^5.1.2"
+    },
+    "devDependencies": {
+        "@types/aws-lambda": "^8.10.152",
+        "@types/node": "^24.3.0",
+        "serverless-offline": "^14.4.0",
+        "typescript": "^5.9.2"
+    }
+}

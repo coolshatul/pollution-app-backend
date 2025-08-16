@@ -1,0 +1,5 @@
+API_USERNAME: ${env:API_USERNAME}
+API_PASSWORD: ${env:API_PASSWORD}
+MOCK_API_BASE: ${env:MOCK_API_BASE}
+CACHE_TTL: ${env:CACHE_TTL, '3600'}  # Default to 1 hour if not set
+REGION: ${env:REGION, 'ap-south-1'}  # Default to ap-south-1 if not set 

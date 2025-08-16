@@ -1,0 +1,22 @@
+service: pollution-backend
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: ${env:REGION}
+  memorySize: 128
+  timeout: 30
+  stage: ${opt:stage, 'dev'}
+  environment: ${file(./environment.yml)}
+
+functions:
+  getCities:
+    handler: src/handler.getCities
+    events:
+      - httpApi:
+          path: /cities
+          method: get
+          cors: true
+
+plugins:
+  - serverless-offline
